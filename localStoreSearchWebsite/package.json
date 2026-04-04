@@ -1,0 +1,16 @@
+{
+  "name": "swprojs-npm",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Jay G",
+  "type": "commonjs",
+  "main": "homePage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {}
+}
