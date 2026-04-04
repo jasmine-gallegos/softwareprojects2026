@@ -17,19 +17,16 @@ const db = new pg.Client({
 
 db.connect();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("public/homePage"));
 
-// GET home page
 app.get("/", async (req, res) => {
-  const result = await db.query("SELECT * FROM users");
-  let users = [];
-  result.rows.forEach((user) => {
-    users.push(users.firstname);
-  });
+    const result = await db.query("SELECT * FROM users");
+    let users = [];
+    result.rows.forEach((user) => {
+        users.push(user.firstname);
+    });
 
   console.log(result.rows);
-  res.render("index.ejs", { users: users, total: users.length });
   db.end();
 });
 
