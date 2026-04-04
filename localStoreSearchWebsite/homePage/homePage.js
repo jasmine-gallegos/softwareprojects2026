@@ -1,4 +1,7 @@
+import express from "express";
 import pg from "pg";
+
+const app = express();
 
 const db = new pg.Client({
     user: "postgres",
@@ -20,6 +23,7 @@ db.query("SELECT * FROM users", (err, res) => {
     db.end();
 });
 
+console.log("here");
 
 // check if user is logged in or not
 // then switch the login/signup button accordingly 
