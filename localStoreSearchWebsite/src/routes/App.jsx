@@ -7,19 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router';
 
 var isLoggedIn = true;
+var needsNavBar = true;
 
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Link to="/">Home</Link>
-        <SearchBar />
-        <Link to="/login">Log In / Sign Up</Link>
-
-        {isLoggedIn ?  (<LoginSignupButton buttonName="Profile"/>) : (<LoginSignupButton buttonName="Log In / Sign Up"/>)}
-
-      </div>
-
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -29,23 +22,44 @@ function App() {
   );
 }
 
-function LoginSignupButton({buttonName}) {
+function NavBar() {
+    if (needsNavBar == false) {
+      return null;
+    }
+
+    return (
+      <div>
+        <Link to="/"><button>Home</button></Link>
+        
+        <Link to="/cart">{<Cart/>}</Link>
+        <Link to="/login">
+          {isLoggedIn ?  (<LoginProfileButton buttonName="Profile"/>) : 
+            (<LoginProfileButton buttonName="Log In / Sign Up"/>)}
+        </Link>
+
+        
+
+      </div>
+    );
+}
+
+function Cart() {
+  // no cart if not logged in
+  if (!isLoggedIn) {
+    return null;
+  }
+
+  return (
+    <button>Cart</button>
+  );
+
+}
+
+function LoginProfileButton({buttonName}) {
   return (
     <button>{buttonName}</button>
   );
 }
-
-function SearchBar() {
-  return (
-  <div>
-    <input type="search" id="siteSearch" />
-    <button>Search</button>
-  </div>
-  );
-}
-
-
-
 
 
 export default App;
