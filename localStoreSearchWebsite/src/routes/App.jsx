@@ -36,9 +36,6 @@ function NavBar() {
           {isLoggedIn ?  (<LoginProfileButton buttonName="Profile"/>) : 
             (<LoginProfileButton buttonName="Log In / Sign Up"/>)}
         </Link>
-
-        
-
       </div>
     );
 }
