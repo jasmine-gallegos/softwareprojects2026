@@ -29,6 +29,8 @@ function NavBar() {
 
     return (
       <div>
+        <button>HALLOOOO HIIIII</button>
+
         <Link to="/"><button>Home</button></Link>
         
         <Link to="/cart">{<Cart/>}</Link>
